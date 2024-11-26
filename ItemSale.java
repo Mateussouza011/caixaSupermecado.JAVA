@@ -22,4 +22,8 @@ public class ItemSale {
     public void removeQuantity(int qty) {
         quantity -= qty;
     }
+
+    public void addQuantity(int qty) {
+        quantity += qty;
+    }
 }

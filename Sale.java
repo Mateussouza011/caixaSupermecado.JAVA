@@ -11,6 +11,14 @@ public class Sale {
     }
 
     public void addItem(Product product, int quantity) {
+        for (ItemSale item : items) {
+            if (item.getProduct().getCode().equals(product.getCode())) {
+                item.addQuantity(quantity);
+                totalValue += product.getPrice() * quantity;
+                product.removeStock(quantity);
+                return;
+            }
+        }
         ItemSale item = new ItemSale(product, quantity);
         items.add(item);
         totalValue += item.getTotalValue();

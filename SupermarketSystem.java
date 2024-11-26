@@ -263,18 +263,19 @@ public class SupermarketSystem {
     }
 
     private static void reportDailyProfit() {
-        List<Double> profits = cashRegister.getDailyProfits();
         List<Double> openingValues = cashRegister.getOpeningValues();
         List<Double> closingValues = cashRegister.getClosingValues();
         double totalProfit = 0.0;
-        for (int i = 0; i < profits.size(); i++) {
-            double profit = profits.get(i);
-            totalProfit += profit;
-            System.out.println((i + 1) + "º Dia - Lucro: R$" + String.format("%.2f", profit)
-                    + " (Abertura: R$" + String.format("%.2f", openingValues.get(i))
-                    + ", Fechamento: R$" + String.format("%.2f", closingValues.get(i)) + ")");
+        for (int i = 0; i < openingValues.size(); i++) {
+            double openingValue = openingValues.get(i);
+            double closingValue = closingValues.get(i);
+            double dailyProfit = closingValue - openingValue;
+            totalProfit += dailyProfit;
+            System.out.println((i + 1) + "º Dia - Lucro: R$" + String.format("%.2f", dailyProfit)
+                    + " (Abertura: R$" + String.format("%.2f", openingValue)
+                    + ", Fechamento: R$" + String.format("%.2f", closingValue) + ")");
         }
-        System.out.println("Total de dias registrados: " + profits.size());
+        System.out.println("Total de dias registrados: " + openingValues.size());
         System.out.println("Lucro total: R$" + String.format("%.2f", totalProfit));
     }
 
