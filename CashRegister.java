@@ -47,11 +47,9 @@ public class CashRegister {
     }
 
     public void closeCashRegister() {
-        double dailyProfit = cashValue - openingValue;
-        dailyProfits.add(dailyProfit);
-        closingValues.add(cashValue);
-        lastCashValue = cashValue;
-        System.out.println("Caixa fechado. Lucro do dia: R$" + String.format("%.2f", dailyProfit));
+        this.closingValues.add(this.cashValue);
+        this.lastCashValue = this.cashValue; // Atualiza o lastCashValue com o valor de fechamento
+        System.out.println("Caixa fechado. Lucro do dia: R$" + String.format("%.2f", cashValue - openingValue));
     }
 
     public List<Double> getDailyProfits() {
